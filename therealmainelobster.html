@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Real Maine Lobster | Lobster Rolls on Wheels in Orlando, FL</title>
+<meta name="description" content="Warm buttered Connecticut rolls, chilled Maine rolls, shrimp, crab cakes and pretzel burgers. Pre-order from The Real Maine Lobster food truck in Orlando and Central Florida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+  --lobster:#d8402b;
+  --lobster-dk:#a92a19;
+  --butter:#f6c247;
+  --butter-lt:#fde9b0;
+  --navy:#132a43;
+  --navy-2:#1d3c5c;
+  --cream:#fbf5ea;
+  --paper:#fffdf8;
+  --ink:#1b1b1f;
+  --muted:#5f6670;
+  --line:#e9dfcd;
+  --radius:22px;
+  --shadow:0 18px 40px -18px rgba(19,42,67,.35);
+  --ease:cubic-bezier(.22,.8,.26,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:'Figtree',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.02;letter-spacing:-.02em}
+:focus-visible{outline:3px solid var(--butter);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1200px,92vw);margin-inline:auto}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lobster)}
+.eyebrow i{font-size:.9rem}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:var(--navy);margin-top:.5rem}
+.sec-head p{max-width:420px;color:var(--muted)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.5rem;border-radius:999px;font-weight:700;transition:transform .3s var(--ease),background .3s,box-shadow .3s,color .3s;white-space:nowrap}
+.btn-red{background:var(--lobster);color:#fff;box-shadow:0 10px 24px -10px rgba(216,64,43,.7)}
+.btn-red:hover{background:var(--lobster-dk);transform:translateY(-2px)}
+.btn-ghost{border:2px solid var(--navy);color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff;transform:translateY(-2px)}
+.btn-butter{background:var(--butter);color:var(--navy)}
+.btn-butter:hover{background:#ffd566;transform:translateY(-2px)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .35s,box-shadow .35s,padding .35s;padding:1rem 0}
+.nav.scrolled{background:rgba(251,245,234,.94);backdrop-filter:blur(10px);box-shadow:0 6px 24px -14px rgba(0,0,0,.25);padding:.55rem 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.15rem;color:var(--navy);line-height:1}
+.brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.15);background:var(--lobster)}
+.brand small{display:block;font-family:'Figtree';font-weight:600;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lobster);margin-top:3px}
+.nav-links{display:flex;gap:.3rem;list-style:none}
+.nav-links a{padding:.55rem .95rem;border-radius:999px;font-weight:600;font-size:.95rem;color:var(--navy);transition:background .25s}
+.nav-links a:hover{background:rgba(19,42,67,.08)}
+.nav-right{display:flex;align-items:center;gap:.6rem}
+.cart-btn{position:relative;width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;transition:transform .3s var(--ease),background .3s}
+.cart-btn:hover{transform:scale(1.07);background:var(--lobster)}
+.cart-count{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--butter);color:var(--navy);font-size:.75rem;font-weight:800;display:grid;place-items:center;border:2px solid var(--cream);transform:scale(0);transition:transform .3s var(--ease)}
+.cart-count.show{transform:scale(1)}
+.cart-count.bump{animation:bump .4s var(--ease)}
+@keyframes bump{50%{transform:scale(1.4)}}
+.burger{display:none;width:48px;height:48px;border-radius:50%;border:2px solid var(--navy);color:var(--navy)}
+.nav .btn{padding:.75rem 1.2rem}
+
+/* hero */
+.hero{position:relative;padding:8.5rem 0 4rem;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-12vw;top:-10vw;width:62vw;height:62vw;border-radius:50%;background:radial-gradient(circle at 40% 40%,var(--butter-lt),transparent 68%);z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(3rem,7.4vw,6.4rem);font-weight:800;color:var(--navy)}
+.hero h1 .red{color:var(--lobster);display:inline-block}
+.hero h1 .script{position:relative;display:inline-block}
+.hero h1 .script::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:.18em;background:var(--butter);z-index:-1;border-radius:6px;transform-origin:left;animation:swipe 1s .7s var(--ease) both}
+@keyframes swipe{from{transform:scaleX(0)}}
+.hero-lead{font-size:1.2rem;color:var(--muted);max-width:500px;margin:1.4rem 0 2rem}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero-facts{display:flex;gap:2rem;margin-top:2.6rem;flex-wrap:wrap}
+.fact{display:flex;align-items:center;gap:.75rem}
+.fact i{width:44px;height:44px;border-radius:14px;background:#fff;display:grid;place-items:center;color:var(--lobster);box-shadow:0 6px 16px -8px rgba(0,0,0,.25)}
+.fact b{display:block;font-family:'Bricolage Grotesque';font-size:1.25rem;color:var(--navy);line-height:1.1}
+.fact span{font-size:.85rem;color:var(--muted)}
+.hero-visual{position:relative;aspect-ratio:1/1.02}
+.plate{position:absolute;inset:4% 2% 6% 6%;border-radius:46% 54% 50% 50%/52% 46% 54% 48%;overflow:hidden;box-shadow:0 40px 70px -30px rgba(19,42,67,.55);border:10px solid #fff;animation:float 7s ease-in-out infinite}
+.plate img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.2s var(--ease)}
+.hero-visual:hover .plate img{transform:scale(1.12)}
+@keyframes float{50%{transform:translateY(-12px) rotate(-1deg)}}
+.sticker{position:absolute;z-index:2;background:var(--lobster);color:#fff;width:132px;height:132px;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:'Bricolage Grotesque';font-weight:800;line-height:1;top:2%;left:-2%;transform:rotate(-12deg);box-shadow:0 14px 30px -12px rgba(169,42,25,.8)}
+.sticker small{display:block;font-family:'Figtree';font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+.sticker b{font-size:2.3rem}
+.quick-add{position:absolute;z-index:2;right:0;bottom:4%;background:#fff;border-radius:20px;padding:1rem 1.1rem;display:flex;align-items:center;gap:1rem;box-shadow:var(--shadow);max-width:290px}
+.quick-add h4{font-size:1.05rem;color:var(--navy)}
+.quick-add p{font-size:.82rem;color:var(--muted);line-height:1.3}
+.quick-add .add{flex-shrink:0}
+.rating-pill{position:absolute;z-index:2;right:6%;top:6%;background:var(--navy);color:#fff;border-radius:999px;padding:.55rem 1rem;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:.5rem;box-shadow:var(--shadow)}
+.rating-pill i{color:var(--butter)}
+
+/* ticker */
+.ticker{background:var(--navy);color:var(--cream);overflow:hidden;padding:1rem 0;transform:rotate(-1.2deg);margin:1rem -2vw 0;width:104vw}
+.ticker-track{display:flex;gap:3rem;width:max-content;animation:tick 32s linear infinite;font-family:'Bricolage Grotesque';font-weight:700;font-size:1.35rem;text-transform:uppercase;letter-spacing:.02em}
+.ticker-track span{display:flex;align-items:center;gap:3rem}
+.ticker-track i{color:var(--butter);font-size:1rem}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* steps */
+.steps{padding:6rem 0 3rem}
+.step-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;counter-reset:s}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;position:relative;transition:transform .35s var(--ease),box-shadow .35s}
+.step:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.step::before{counter-increment:s;content:"0" counter(s);position:absolute;right:1.4rem;top:1.1rem;font-family:'Bricolage Grotesque';font-weight:800;font-size:2.6rem;color:var(--line)}
+.step i{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:1.35rem;background:var(--butter-lt);color:var(--lobster-dk);margin-bottom:1.1rem}
+.step h3{font-size:1.35rem;color:var(--navy);margin-bottom:.4rem}
+.step p{color:var(--muted);font-size:.97rem}
+
+/* menu */
+.menu{padding:5rem 0 6rem}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;position:sticky;top:72px;z-index:5;padding:.6rem 0;background:var(--cream)}
+.tab{padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--line);background:var(--paper);font-weight:700;color:var(--navy);display:flex;align-items:center;gap:.5rem;transition:all .3s var(--ease)}
+.tab:hover{border-color:var(--navy)}
+.tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.tab .n{font-size:.75rem;background:rgba(0,0,0,.08);border-radius:999px;padding:.05rem .5rem}
+.tab.active .n{background:rgba(255,255,255,.18)}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.dish{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s,opacity .35s;position:relative}
+.dish:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.dish.hide{display:none}
+.dish.fade{animation:fadeIn .5s var(--ease) both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}}
+.dish-media{aspect-ratio:4/3;position:relative;overflow:hidden;display:grid;place-items:center}
+.dish-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);filter:saturate(1.08) contrast(1.03)}
+.dish-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(246,194,71,.06),transparent 40%,rgba(19,42,67,.22));pointer-events:none}
+.dish:hover .dish-media img{transform:scale(1.08)}
+.dish-media .ico{font-size:3.2rem;transition:transform .5s var(--ease)}
+.dish:hover .dish-media .ico{transform:scale(1.15) rotate(-8deg)}
+.bg-red{background:linear-gradient(135deg,#f9d7cf,#f3b3a6);color:var(--lobster-dk)}
+.bg-butter{background:linear-gradient(135deg,#fff1c8,#fbd779);color:#9a6b00}
+.bg-navy{background:linear-gradient(135deg,#cfdeef,#9fbbdb);color:var(--navy)}
+.bg-sea{background:linear-gradient(135deg,#d6efe9,#a6d8cc);color:#1c6b5a}
+.badge{position:absolute;top:.8rem;left:.8rem;background:var(--lobster);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .65rem;border-radius:999px;display:flex;gap:.35rem;align-items:center;z-index:1}
+.badge.b-navy{background:var(--navy)}
+.dish-body{padding:1.15rem 1.2rem 1.25rem;display:flex;flex-direction:column;flex:1}
+.dish-body h3{font-size:1.2rem;color:var(--navy);margin-bottom:.35rem}
+.dish-body p{color:var(--muted);font-size:.9rem;line-height:1.45;flex:1}
+.dish-foot{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
+.price{font-family:'Bricolage Grotesque';font-weight:800;font-size:1.45rem;color:var(--lobster)}
+.add{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;transition:transform .3s var(--ease),background .3s}
+.add:hover{background:var(--lobster);transform:rotate(90deg) scale(1.06)}
+.add.done{background:#2e9b6c;transform:none}
+.dish.feature{grid-column:span 2;grid-row:span 2;flex-direction:column}
+.dish.feature .dish-media{aspect-ratio:auto;flex:1 1 auto;min-height:320px}
+.dish.feature .dish-media img{position:absolute;inset:0}
+.dish.feature .dish-body{flex:0 0 auto}
+.dish.feature h3{font-size:1.9rem}
+.dish.feature .dish-body p{flex:none;font-size:1rem}
+.note{margin-top:1.6rem;color:var(--muted);font-size:.9rem;display:flex;gap:.6rem;align-items:center}
+.note i{color:var(--lobster)}
+
+/* roll picker */
+.picker{padding:5.5rem 0;background:var(--navy);color:var(--cream);position:relative;overflow:hidden}
+.picker::after{content:"\f578";font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;right:-4rem;bottom:-6rem;font-size:26rem;color:rgba(255,255,255,.035);pointer-events:none}
+.picker .sec-head h2{color:#fff}
+.picker .sec-head p{color:#b9c6d6}
+.picker .eyebrow{color:var(--butter)}
+.versus{display:grid;grid-template-columns:1fr auto 1fr;gap:1.2rem;align-items:stretch}
+.roll{border-radius:var(--radius);padding:2rem;display:flex;flex-direction:column;gap:1rem;transition:transform .4s var(--ease)}
+.roll:hover{transform:translateY(-6px)}
+.roll.warm{background:linear-gradient(160deg,var(--lobster),var(--lobster-dk))}
+.roll.cold{background:linear-gradient(160deg,#2d5b88,var(--navy-2));border:1px solid rgba(255,255,255,.12)}
+.roll-top{display:flex;justify-content:space-between;align-items:center}
+.roll-top i{font-size:2rem;opacity:.9}
+.roll-top .tag{font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.16);padding:.35rem .75rem;border-radius:999px}
+.roll h3{font-size:2.1rem;color:#fff}
+.roll ul{list-style:none;display:grid;gap:.55rem}
+.roll li{display:flex;gap:.7rem;align-items:center;color:rgba(255,255,255,.88)}
+.roll li i{width:20px;color:var(--butter)}
+.roll-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(255,255,255,.18)}
+.roll-foot .price{color:#fff;font-size:2rem}
+.vs{align-self:center;width:62px;height:62px;border-radius:50%;background:var(--butter);color:var(--navy);display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:1.2rem}
+
+/* reviews */
+.reviews{padding:6rem 0}
+.rev-layout{display:grid;grid-template-columns:.8fr 1.6fr;gap:2rem;align-items:start}
+.score{background:var(--lobster);color:#fff;border-radius:var(--radius);padding:2.2rem;position:sticky;top:110px}
+.score .big{font-family:'Bricolage Grotesque';font-weight:800;font-size:5.5rem;line-height:1}
+.stars{color:var(--butter);letter-spacing:.15rem;margin:.5rem 0}
+.score p{opacity:.9}
+.score .btn{margin-top:1.4rem}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.rev{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;transition:transform .35s var(--ease),box-shadow .35s}
+.rev:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.rev:nth-child(2){transform:translateY(2rem)}
+.rev:nth-child(2):hover{transform:translateY(calc(2rem - 5px))}
+.rev .q{font-size:1.6rem;color:var(--butter)}
+.rev p{margin:.6rem 0 1.2rem;font-size:1.02rem}
+.who{display:flex;align-items:center;gap:.75rem}
+.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;background:var(--navy)}
+.who b{display:block;color:var(--navy);line-height:1.1}
+.who span{font-size:.82rem;color:var(--muted)}
+.who .av{font-size:1rem;color:#fff}
+
+/* catering */
+.cater{padding:2rem 0 6rem}
+.cater-card{display:grid;grid-template-columns:1.05fr 1fr;border-radius:32px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow)}
+.cater-img{position:relative;min-height:520px;background:var(--navy)}
+.cater-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cater-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(19,42,67,.92))}
+.cater-over{position:absolute;z-index:1;left:2rem;right:2rem;bottom:2rem;color:#fff}
+.cater-over h3{font-size:1.15rem;margin-bottom:.8rem;display:flex;gap:.5rem;align-items:center}
+.cater-over h3 i{color:var(--butter)}
+.events{display:grid;gap:.5rem}
+.ev{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.92rem;padding:.6rem .85rem;background:rgba(19,42,67,.88);border:1px solid rgba(255,255,255,.1);border-radius:12px}
+.ev span:last-child{color:var(--butter);font-weight:700;white-space:nowrap}
+.cater-form{padding:2.6rem}
+.cater-form h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--navy);margin:.5rem 0 .6rem}
+.cater-form > p{color:var(--muted);margin-bottom:1.6rem}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field.full{grid-column:1/-1}
+.field label{font-size:.82rem;font-weight:700;color:var(--navy)}
+.inp{position:relative}
+.inp i{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;pointer-events:none}
+.inp input,.inp select,.field textarea{width:100%;padding:.85rem 1rem .85rem 2.6rem;border:1.5px solid var(--line);border-radius:14px;font:inherit;font-size:.97rem;background:#fff;color:var(--ink);transition:border-color .25s,box-shadow .25s}
+.field textarea{padding-left:1rem;resize:vertical;min-height:84px}
+.inp input:focus,.inp select:focus,.field textarea:focus{outline:none;border-color:var(--lobster);box-shadow:0 0 0 4px rgba(216,64,43,.12)}
+.field.err input,.field.err select{border-color:var(--lobster)}
+.ferr{font-size:.78rem;color:var(--lobster-dk);display:none}
+.field.err .ferr{display:block}
+.guests{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.guests button{width:48px;height:48px;color:var(--navy);transition:background .2s}
+.guests button:hover{background:var(--butter-lt)}
+.guests output{flex:1;text-align:center;font-weight:700}
+.form-ok{display:none;text-align:center;padding:2rem 0}
+.form-ok i{font-size:3rem;color:#2e9b6c;margin-bottom:1rem}
+.form-ok h3{font-size:1.8rem;color:var(--navy);margin-bottom:.5rem}
+
+/* footer */
+footer{background:var(--navy);color:#c8d3e0;padding:4rem 0 1.6rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem}
+footer .brand{color:#fff;margin-bottom:1rem}
+footer h4{color:#fff;font-size:1.05rem;margin-bottom:1rem}
+footer ul{list-style:none;display:grid;gap:.6rem}
+footer ul a,footer ul li{display:flex;gap:.6rem;align-items:center;transition:color .25s}
+footer ul a:hover{color:var(--butter)}
+footer ul i{width:18px;color:var(--butter)}
+.socials{display:flex;gap:.6rem;margin-top:1.2rem}
+.socials a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;transition:all .3s var(--ease)}
+.socials a:hover{background:var(--butter);color:var(--navy);transform:translateY(-3px)}
+.copy{margin-top:3rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.88rem}
+
+/* cart drawer */
+.overlay{position:fixed;inset:0;background:rgba(19,42,67,.5);backdrop-filter:blur(3px);z-index:80;opacity:0;pointer-events:none;transition:opacity .35s}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100vw);background:var(--paper);z-index:90;transform:translateX(100%);transition:transform .45s var(--ease);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.d-head{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 1.5rem;border-bottom:1px solid var(--line)}
+.d-head h3{font-size:1.6rem;color:var(--navy)}
+.x{width:42px;height:42px;border-radius:50%;background:var(--cream);display:grid;place-items:center;transition:background .25s,transform .3s}
+.x:hover{background:var(--butter-lt);transform:rotate(90deg)}
+.d-body{flex:1;overflow:auto;padding:1rem 1.5rem}
+.empty{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.empty i{font-size:3rem;color:var(--line);margin-bottom:1rem}
+.line{display:flex;gap:.9rem;align-items:center;padding:.9rem 0;border-bottom:1px dashed var(--line);animation:fadeIn .35s var(--ease)}
+.line .thumb{width:54px;height:54px;border-radius:14px;flex-shrink:0;display:grid;place-items:center;font-size:1.3rem;overflow:hidden}
+.line .thumb img{width:100%;height:100%;object-fit:cover}
+.line .info{flex:1;min-width:0}
+.line b{display:block;color:var(--navy);font-size:.98rem;line-height:1.2}
+.line small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:.2rem;background:var(--cream);border-radius:999px;padding:.2rem}
+.qty button{width:30px;height:30px;border-radius:50%;font-size:.8rem;color:var(--navy);transition:background .2s}
+.qty button:hover{background:#fff}
+.qty span{min-width:20px;text-align:center;font-weight:700}
+.d-foot{padding:1.3rem 1.5rem;border-top:1px solid var(--line);background:#fff}
+.tot{display:flex;justify-content:space-between;font-size:.95rem;color:var(--muted);margin-bottom:.3rem}
+.tot.grand{font-family:'Bricolage Grotesque';font-size:1.5rem;font-weight:800;color:var(--navy);margin:.5rem 0 1rem}
+.d-foot .btn{width:100%;justify-content:center}
+.d-foot .btn[disabled]{opacity:.45;pointer-events:none}
+.checkout{display:none;gap:.8rem;flex-direction:column}
+.checkout.show{display:flex}
+.back{font-weight:700;color:var(--navy);display:flex;gap:.5rem;align-items:center;margin-bottom:.4rem;font-size:.92rem}
+.back:hover{color:var(--lobster)}
+.pickup{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.pickup label{border:1.5px solid var(--line);border-radius:14px;padding:.75rem;text-align:center;font-weight:700;font-size:.9rem;color:var(--navy);cursor:pointer;transition:all .25s}
+.pickup input{position:absolute;opacity:0;pointer-events:none}
+.pickup input:checked + label{border-color:var(--lobster);background:#fdeeea;color:var(--lobster-dk)}
+.pickup input:focus-visible + label{outline:3px solid var(--butter)}
+
+/* mobile side menu */
+.mnav-overlay{position:fixed;inset:0;background:rgba(19,42,67,.5);backdrop-filter:blur(3px);z-index:85;opacity:0;pointer-events:none;transition:opacity .35s}
+.mnav-overlay.open{opacity:1;pointer-events:auto}
+.mnav{position:fixed;top:0;right:0;height:100%;height:100dvh;width:min(340px,86vw);background:var(--paper);z-index:86;transform:translateX(105%);visibility:hidden;transition:transform .45s var(--ease),visibility .45s;display:flex;flex-direction:column;box-shadow:-20px 0 50px -20px rgba(0,0,0,.35)}
+.mnav.open{transform:none;visibility:visible}
+.mnav-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.2rem;border-bottom:1px solid var(--line)}
+.mnav-head .brand{font-size:1rem}
+.mnav-head .brand img{width:40px;height:40px}
+.mnav ul{list-style:none;padding:1rem .8rem;display:grid;gap:.25rem;flex:1;overflow:auto;align-content:start}
+.mnav ul a{display:flex;align-items:center;gap:.9rem;padding:.95rem 1rem;border-radius:14px;font-weight:700;font-size:1.05rem;color:var(--navy);transition:background .25s,color .25s,transform .25s var(--ease)}
+.mnav ul a i:first-child{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--butter-lt);color:var(--lobster-dk);font-size:.95rem}
+.mnav ul a .fa-angle-right{margin-left:auto;color:var(--muted);font-size:.85rem}
+.mnav ul a:hover{background:var(--cream);transform:translateX(4px)}
+.mnav ul a:hover .fa-angle-right{color:var(--lobster)}
+.mnav-foot{padding:1.2rem;border-top:1px solid var(--line);display:grid;gap:.6rem}
+.mnav-foot .btn{justify-content:center}
+.mnav-foot small{text-align:center;color:var(--muted);font-size:.82rem;display:flex;gap:.4rem;align-items:center;justify-content:center}
+.mnav-foot small i{color:var(--lobster)}
+@media (min-width:901px){.mnav,.mnav-overlay{display:none}}
+
+/* mobile cart bar */
+.cartbar{position:fixed;left:50%;bottom:1rem;transform:translate(-50%,160%);z-index:60;background:var(--navy);color:#fff;border-radius:999px;padding:.55rem .55rem .55rem 1.3rem;display:flex;align-items:center;gap:1rem;box-shadow:0 18px 40px -12px rgba(0,0,0,.45);transition:transform .45s var(--ease);width:max-content;max-width:94vw}
+.cartbar.show{transform:translate(-50%,0)}
+.cartbar b{font-family:'Bricolage Grotesque';font-size:1.1rem}
+.cartbar .btn{padding:.7rem 1.1rem}
+
+/* toast */
+.toast{position:fixed;top:90px;left:50%;transform:translate(-50%,-30px);opacity:0;background:#fff;color:var(--navy);border-radius:999px;padding:.7rem 1.2rem;font-weight:700;box-shadow:var(--shadow);z-index:100;display:flex;gap:.6rem;align-items:center;transition:all .4s var(--ease);pointer-events:none}
+.toast i{color:#2e9b6c}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+/* responsive */
+@media (max-width:1080px){
+  .menu-grid{grid-template-columns:repeat(3,1fr)}
+  .dish.feature{grid-column:span 3;grid-row:auto;flex-direction:row}
+  .dish.feature .dish-media{min-height:300px;flex:1.1}
+  .dish.feature .dish-body{flex:1;justify-content:center}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .nav-links{display:none}
+  .burger{display:grid;place-items:center}
+  .nav .btn{display:none}
+  .hero{padding-top:7rem}
+  .hero-grid{grid-template-columns:1fr;gap:2rem}
+  .hero-visual{max-width:540px;margin-inline:auto;width:100%}
+  .step-row{grid-template-columns:1fr}
+  .versus{grid-template-columns:1fr}
+  .vs{margin:-1.6rem auto;position:relative;z-index:1}
+  .rev-layout{grid-template-columns:1fr}
+  .score{position:static}
+  .cater-card{grid-template-columns:1fr}
+  .cater-img{min-height:440px}
+}
+@media (max-width:720px){
+  body{font-size:16px}
+  .menu-grid{grid-template-columns:1fr 1fr;gap:.8rem}
+  .dish.feature{grid-column:span 2;flex-direction:column}
+  .dish.feature .dish-media{min-height:240px}
+  .dish.feature h3{font-size:1.5rem}
+  .dish-body{padding:.9rem}
+  .dish-body h3{font-size:1.02rem}
+  .dish-body p{font-size:.82rem}
+  .price{font-size:1.2rem}
+  .add{width:40px;height:40px}
+  .rev-grid{grid-template-columns:1fr}
+  .rev:nth-child(2){transform:none}
+  .rev:nth-child(2):hover{transform:translateY(-5px)}
+  .fgrid{grid-template-columns:1fr}
+  .cater-img{min-height:0;display:flex;flex-direction:column;background:var(--navy)}
+  .cater-img img{position:static;height:240px}
+  .cater-img::after{display:none}
+  .cater-over{position:static;padding:1.4rem 1.2rem 1.5rem}
+  .ev{background:rgba(255,255,255,.07);flex-direction:column;align-items:flex-start;gap:.15rem;padding:.75rem .9rem}
+  .ev span:first-child{line-height:1.35}
+  .cater-form{padding:1.8rem 1.4rem}
+  .sticker{width:104px;height:104px}
+  .sticker b{font-size:1.8rem}
+  .quick-add{left:6%;right:6%;max-width:none}
+  .rating-pill{top:0;right:2%}
+  .tabs{position:static;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex-shrink:0}
+  .foot-grid{grid-template-columns:1fr}
+  .brand span{font-size:1rem}
+}
+@media (min-width:901px){.cartbar{display:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="The Real Maine Lobster home">
+      <img src="https://images.gotruckster.com/trucks/logos/SBD0C56qQ42VAmN5ZyzbEAwaIgpNh6.jpg" alt="The Real Maine Lobster logo" onerror="this.style.display='none'">
+      <span>The Real Maine Lobster<small>Orlando food truck</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#how">How to order</a></li>
+      <li><a href="#rolls">Pick a roll</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#catering">Catering</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#menu" class="btn btn-red"><i class="fa-solid fa-bag-shopping"></i> Order now</a>
+      <button class="cart-btn" id="cartOpen" aria-label="Open your order"><i class="fa-solid fa-basket-shopping"></i><span class="cart-count" id="cartCount">0</span></button>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="mnav-overlay" id="mnavOverlay"></div>
+<nav class="mnav" id="mnav" aria-label="Mobile menu" aria-hidden="true">
+  <div class="mnav-head">
+    <a href="#top" class="brand"><img src="https://images.gotruckster.com/trucks/logos/SBD0C56qQ42VAmN5ZyzbEAwaIgpNh6.jpg" alt="" onerror="this.style.display='none'"><span>The Real Maine Lobster<small>Orlando food truck</small></span></a>
+    <button class="x" id="mnavClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <ul>
+    <li><a href="#menu"><i class="fa-solid fa-utensils"></i> Menu <i class="fa-solid fa-angle-right"></i></a></li>
+    <li><a href="#how"><i class="fa-solid fa-route"></i> How to order <i class="fa-solid fa-angle-right"></i></a></li>
+    <li><a href="#rolls"><i class="fa-solid fa-scale-balanced"></i> Pick a roll <i class="fa-solid fa-angle-right"></i></a></li>
+    <li><a href="#reviews"><i class="fa-solid fa-star"></i> Reviews <i class="fa-solid fa-angle-right"></i></a></li>
+    <li><a href="#catering"><i class="fa-solid fa-champagne-glasses"></i> Catering <i class="fa-solid fa-angle-right"></i></a></li>
+  </ul>
+  <div class="mnav-foot">
+    <a href="#menu" class="btn btn-red"><i class="fa-solid fa-bag-shopping"></i> Order now</a>
+    <a href="#catering" class="btn btn-ghost"><i class="fa-regular fa-calendar-check"></i> Book the truck</a>
+    <small><i class="fa-solid fa-location-dot"></i> Orlando &amp; Central Florida</small>
+  </div>
+</nav>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow reveal"><i class="fa-solid fa-truck-fast"></i> Rolling through Central Florida</span>
+      <h1 class="reveal d1" style="margin-top:1rem">Real <span class="red">Maine lobster.</span><br>Hot <span class="script">butter.</span> No&nbsp;wait.</h1>
+      <p class="hero-lead reveal d2">Overstuffed lobster rolls on toasted split top buns, crispy shrimp and big pretzel burgers. Pre-order from your phone and walk right up to the window.</p>
+      <div class="hero-cta reveal d3">
+        <a href="#menu" class="btn btn-red"><i class="fa-solid fa-utensils"></i> See the menu</a>
+        <a href="#catering" class="btn btn-ghost"><i class="fa-regular fa-calendar-check"></i> Book the truck</a>
+      </div>
+      <div class="hero-facts reveal d3">
+        <div class="fact"><i class="fa-solid fa-star"></i><div><b>4.3 / 5</b><span>269 reviews</span></div></div>
+        <div class="fact"><i class="fa-solid fa-mobile-screen"></i><div><b>Pre-order</b><span>Skip the line</span></div></div>
+        <div class="fact"><i class="fa-solid fa-users"></i><div><b>30 to 400+</b><span>Guests catered</span></div></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal d2">
+      <div class="sticker"><div><small>Lobster roll</small><b>$25</b><small>with fries</small></div></div>
+      <div class="rating-pill"><i class="fa-solid fa-star"></i> Fan favorite</div>
+      <div class="plate">
+        <img src="https://bft-production.storage.googleapis.com/resources/items/211939/images/medium/connecticut-lobster-roll.jpg?1780217211" alt="Connecticut lobster roll stuffed with warm buttered Maine lobster on a split top bun">
+      </div>
+      <div class="quick-add">
+        <div>
+          <h4>Connecticut Lobster Roll</h4>
+          <p>Warm lobster, melted butter, fries &amp; slaw</p>
+        </div>
+        <button class="add" data-add="ct-roll" aria-label="Add Connecticut Lobster Roll to order"><i class="fa-solid fa-plus"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Connecticut roll <i class="fa-solid fa-star"></i> Maine roll <i class="fa-solid fa-star"></i> Lobster quesadilla <i class="fa-solid fa-star"></i> Surf &amp; turf burger <i class="fa-solid fa-star"></i> Crab cakes <i class="fa-solid fa-star"></i> Shrimp tacos <i class="fa-solid fa-star"></i></span>
+      <span>Connecticut roll <i class="fa-solid fa-star"></i> Maine roll <i class="fa-solid fa-star"></i> Lobster quesadilla <i class="fa-solid fa-star"></i> Surf &amp; turf burger <i class="fa-solid fa-star"></i> Crab cakes <i class="fa-solid fa-star"></i> Shrimp tacos <i class="fa-solid fa-star"></i></span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="steps" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow"><i class="fa-solid fa-route"></i> Three easy steps</span><h2>Ordering takes a minute.</h2></div>
+      <p>No account, no fuss. Build your order here and we'll have it hot and ready when you get to the truck.</p>
+    </div>
+    <div class="step-row">
+      <div class="step reveal"><i class="fa-solid fa-hand-pointer"></i><h3>Tap the plus</h3><p>Add rolls, baskets, burgers and drinks. Your basket keeps a running total.</p></div>
+      <div class="step reveal d1"><i class="fa-regular fa-clock"></i><h3>Pick a time</h3><p>Choose ASAP or a later pickup slot and leave your name and number.</p></div>
+      <div class="step reveal d2"><i class="fa-solid fa-bell-concierge"></i><h3>Grab &amp; go</h3><p>Say your name at the window. Your lobster is waiting, no line needed.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow"><i class="fa-solid fa-fish-fins"></i> The menu</span><h2>What are you craving?</h2></div>
+      <p>Every entree comes with fries. Seafood plates also come with our house coleslaw.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Menu categories">
+      <button class="tab active" data-f="all" role="tab" aria-selected="true">All <span class="n">13</span></button>
+      <button class="tab" data-f="lobster" role="tab" aria-selected="false"><i class="fa-solid fa-star"></i> Lobster <span class="n">4</span></button>
+      <button class="tab" data-f="sea" role="tab" aria-selected="false"><i class="fa-solid fa-shrimp"></i> Seafood <span class="n">3</span></button>
+      <button class="tab" data-f="burger" role="tab" aria-selected="false"><i class="fa-solid fa-burger"></i> Burgers <span class="n">2</span></button>
+      <button class="tab" data-f="drink" role="tab" aria-selected="false"><i class="fa-solid fa-bottle-water"></i> Drinks <span class="n">4</span></button>
+    </div>
+    <div class="menu-grid" id="menuGrid"></div>
+    <p class="note"><i class="fa-solid fa-circle-info"></i> Prices shown are current truck prices and may change at special events.</p>
+  </div>
+</section>
+
+<!-- ROLL PICKER -->
+<section class="picker" id="rolls">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow"><i class="fa-solid fa-scale-balanced"></i> Can't decide?</span><h2>Warm or chilled?</h2></div>
+      <p>Same sweet Maine lobster, same toasted New England bun. The only question is the temperature.</p>
+    </div>
+    <div class="versus">
+      <article class="roll warm reveal">
+        <div class="roll-top"><i class="fa-solid fa-fire-flame-curved"></i><span class="tag">Most ordered</span></div>
+        <h3>Connecticut Roll</h3>
+        <ul>
+          <li><i class="fa-solid fa-temperature-high"></i> Served warm</li>
+          <li><i class="fa-solid fa-droplet"></i> Drenched in melted butter</li>
+          <li><i class="fa-solid fa-bread-slice"></i> Toasted split top bun</li>
+          <li><i class="fa-solid fa-plus"></i> Fries and coleslaw</li>
+        </ul>
+        <div class="roll-foot"><span class="price">$25</span><button class="btn btn-butter" data-add="ct-roll"><i class="fa-solid fa-plus"></i> Add</button></div>
+      </article>
+      <div class="vs">VS</div>
+      <article class="roll cold reveal d1">
+        <div class="roll-top"><i class="fa-regular fa-snowflake"></i><span class="tag">The classic</span></div>
+        <h3>Maine Roll</h3>
+        <ul>
+          <li><i class="fa-solid fa-temperature-low"></i> Served chilled</li>
+          <li><i class="fa-solid fa-lemon"></i> Light, clean and sweet</li>
+          <li><i class="fa-solid fa-bread-slice"></i> Toasted split top bun</li>
+          <li><i class="fa-solid fa-plus"></i> Fries and coleslaw</li>
+        </ul>
+        <div class="roll-foot"><span class="price">$25</span><button class="btn btn-butter" data-add="me-roll"><i class="fa-solid fa-plus"></i> Add</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap rev-layout">
+    <aside class="score reveal">
+      <span class="eyebrow" style="color:var(--butter-lt)"><i class="fa-solid fa-heart"></i> Guest love</span>
+      <div class="big">4.3</div>
+      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+      <p>From 269 verified food truck orders across Central Florida.</p>
+      <a href="#menu" class="btn btn-butter"><i class="fa-solid fa-bag-shopping"></i> Taste for yourself</a>
+    </aside>
+    <div class="rev-grid">
+      <figure class="rev reveal">
+        <i class="fa-solid fa-quote-left q"></i>
+        <p>Connecticut Lobster roll was amazing, we also loved the Pretzel Cheese Burger!! Great job to you and the crew!!</p>
+        <figcaption class="who"><span class="av">R</span><div><b>Ryan K.</b><span>January 2025</span></div></figcaption>
+      </figure>
+      <figure class="rev reveal d1">
+        <i class="fa-solid fa-quote-left q"></i>
+        <p>Great setup of online ordering with prepay and food was ready at time provided, delicious, great size and overall quality.</p>
+        <figcaption class="who"><span class="av" style="background:var(--lobster)">J</span><div><b>Janna P.</b><span>August 2024</span></div></figcaption>
+      </figure>
+      <figure class="rev reveal">
+        <i class="fa-solid fa-quote-left q"></i>
+        <p>The freshness and taste were very good.</p>
+        <figcaption class="who"><span class="av" style="background:#2d5b88">C</span><div><b>Charlyne T.</b><span>June 2025</span></div></figcaption>
+      </figure>
+      <figure class="rev reveal d1">
+        <i class="fa-solid fa-quote-left q"></i>
+        <p>A slightly larger portion of their great coleslaw would be appreciated. Other than that, great dinner!</p>
+        <figcaption class="who"><span class="av" style="background:#9a6b00">K</span><div><b>Kelly B.</b><span>August 2024</span></div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CATERING -->
+<section class="cater" id="catering">
+  <div class="wrap">
+    <div class="cater-card reveal">
+      <div class="cater-img">
+        <img src="https://bestfoodtrucks.mo.cloudinary.net/https://bft-production.storage.googleapis.com/resources/trucks/3895/images/original/the-real-maine-lobster-3895.jpg?1709840739&tx=f_auto%2Cc_limit%2Cg_center%2Cw_1600%2Cq_75&resource_type=image" alt="The Real Maine Lobster food truck" loading="lazy" onerror="this.style.display='none'">
+        <div class="cater-over">
+          <h3><i class="fa-solid fa-location-dot"></i> Recently rolled out to</h3>
+          <div class="events">
+            <div class="ev"><span>Employee appreciation, Wildwood</span><span>400+ guests</span></div>
+            <div class="ev"><span>Employee appreciation, St. Augustine</span><span>200+ guests</span></div>
+            <div class="ev"><span>Private event, Orlando</span><span>100+ guests</span></div>
+            <div class="ev"><span>Communities in Tampa, Land O' Lakes &amp; FishHawk</span><span>30+ guests</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cater-form">
+        <span class="eyebrow"><i class="fa-solid fa-champagne-glasses"></i> Catering &amp; events</span>
+        <h2>Bring the lobster truck to you.</h2>
+        <p>Office lunches, neighborhood nights, weddings and parties anywhere in Central Florida. Tell us the basics and we'll get back with a quote.</p>
+        <form id="caterForm" novalidate>
+          <div class="fgrid">
+            <div class="field"><label for="cName">Your name</label><div class="inp"><i class="fa-regular fa-user"></i><input id="cName" name="name" autocomplete="name" placeholder="Jane Smith" required></div><span class="ferr">Please add your name</span></div>
+            <div class="field"><label for="cPhone">Phone</label><div class="inp"><i class="fa-solid fa-phone"></i><input id="cPhone" type="tel" name="phone" autocomplete="tel" placeholder="(407) 555 0123" required></div><span class="ferr">Please add a phone number</span></div>
+            <div class="field"><label for="cDate">Event date</label><div class="inp"><i class="fa-regular fa-calendar"></i><input id="cDate" type="date" name="date" required></div><span class="ferr">Pick a future date</span></div>
+            <div class="field"><label for="cType">Event type</label><div class="inp"><i class="fa-solid fa-tag"></i><select id="cType" name="type"><option>Office lunch</option><option>Community event</option><option>Wedding</option><option>Birthday or party</option><option>Other</option></select></div></div>
+            <div class="field"><label for="cCity">City</label><div class="inp"><i class="fa-solid fa-location-dot"></i><input id="cCity" name="city" placeholder="Orlando" required></div><span class="ferr">Where's the event?</span></div>
+            <div class="field"><label>Guests</label><div class="guests"><button type="button" data-g="-1" aria-label="Fewer guests"><i class="fa-solid fa-minus"></i></button><output id="gOut">50</output><button type="button" data-g="1" aria-label="More guests"><i class="fa-solid fa-plus"></i></button></div></div>
+            <div class="field full"><label for="cMsg">Anything else? <span style="font-weight:500;color:var(--muted)">(optional)</span></label><textarea id="cMsg" name="msg" placeholder="Timing, parking, dietary needs..."></textarea></div>
+            <div class="field full"><button class="btn btn-red" type="submit" style="justify-content:center"><i class="fa-solid fa-paper-plane"></i> Request a quote</button></div>
+          </div>
+        </form>
+        <div class="form-ok" id="caterOk" role="status">
+          <i class="fa-solid fa-circle-check"></i>
+          <h3>Request sent!</h3>
+          <p style="color:var(--muted)">Thanks! We'll reach out within one business day to talk menu and pricing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand"><img src="https://images.gotruckster.com/trucks/logos/SBD0C56qQ42VAmN5ZyzbEAwaIgpNh6.jpg" alt="" onerror="this.style.display='none'"><span>The Real Maine Lobster<small>Orlando food truck</small></span></a>
+        <p>Real Maine lobster rolls, seafood baskets and pretzel bun burgers served from the window across Central Florida.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/mainethangfoodtruck" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#catering" aria-label="Email us"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+      </div>
+      <div><h4>Eat</h4><ul><li><a href="#menu"><i class="fa-solid fa-angle-right"></i> Full menu</a></li><li><a href="#rolls"><i class="fa-solid fa-angle-right"></i> Lobster rolls</a></li><li><a href="#how"><i class="fa-solid fa-angle-right"></i> How to order</a></li></ul></div>
+      <div><h4>Book</h4><ul><li><a href="#catering"><i class="fa-solid fa-angle-right"></i> Catering</a></li><li><a href="#catering"><i class="fa-solid fa-angle-right"></i> Office lunches</a></li><li><a href="#reviews"><i class="fa-solid fa-angle-right"></i> Reviews</a></li></ul></div>
+      <div><h4>Find us</h4><ul><li><i class="fa-solid fa-location-dot"></i> Orlando, Florida</li><li><i class="fa-solid fa-truck"></i> Serving Central Florida</li><li><i class="fa-solid fa-calendar-days"></i> Events &amp; communities</li></ul></div>
+    </div>
+    <p class="copy">&copy; <span id="yr"></span> The Real Maine Lobster. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Your order" aria-hidden="true">
+  <div class="d-head"><h3 id="dTitle">Your order</h3><button class="x" id="cartClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="d-body" id="dBody">
+    <div id="lines"></div>
+    <form class="checkout" id="checkout" novalidate>
+      <button type="button" class="back" id="backBtn"><i class="fa-solid fa-arrow-left"></i> Back to basket</button>
+      <div class="field"><label for="oName">Name for pickup</label><div class="inp"><i class="fa-regular fa-user"></i><input id="oName" autocomplete="name" placeholder="Jane" required></div><span class="ferr">We'll call this name at the window</span></div>
+      <div class="field"><label for="oPhone">Phone</label><div class="inp"><i class="fa-solid fa-phone"></i><input id="oPhone" type="tel" autocomplete="tel" placeholder="(407) 555 0123" required></div><span class="ferr">So we can text when it's ready</span></div>
+      <div class="field"><label>Pickup time</label>
+        <div class="pickup">
+          <input type="radio" name="when" id="w1" value="ASAP" checked><label for="w1"><i class="fa-solid fa-bolt"></i> ASAP</label>
+          <input type="radio" name="when" id="w2" value="In 30 min"><label for="w2"><i class="fa-regular fa-clock"></i> In 30 min</label>
+        </div>
+      </div>
+      <div class="field"><label for="oNote">Note <span style="font-weight:500;color:var(--muted)">(optional)</span></label><textarea id="oNote" placeholder="Extra butter, no slaw..."></textarea></div>
+    </form>
+    <div class="form-ok" id="orderOk" role="status">
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Order placed!</h3>
+      <p style="color:var(--muted)" id="okMsg">We're firing it up now.</p>
+      <button class="btn btn-ghost" id="newOrder" style="margin-top:1.4rem"><i class="fa-solid fa-rotate-left"></i> Start a new order</button>
+    </div>
+  </div>
+  <div class="d-foot" id="dFoot">
+    <div class="tot"><span>Items</span><span id="tItems">0</span></div>
+    <div class="tot"><span>Est. tax (6.5%)</span><span id="tTax">$0.00</span></div>
+    <div class="tot grand"><span>Total</span><span id="tTotal">$0.00</span></div>
+    <button class="btn btn-red" id="nextBtn" disabled><span id="nextTxt">Continue to checkout</span> <i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+</aside>
+
+<div class="cartbar" id="cartbar">
+  <span><b id="barTotal">$0.00</b> &middot; <span id="barCount">0 items</span></span>
+  <button class="btn btn-butter" id="barOpen">View order <i class="fa-solid fa-arrow-right"></i></button>
+</div>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastTxt">Added</span></div>
+
+<script>
+const ROLL_IMG='https://bft-production.storage.googleapis.com/resources/items/211939/images/medium/connecticut-lobster-roll.jpg?1780217211';
+const U=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&q=75`;
+const MENU=[
+  {id:'ct-roll',cat:'lobster',name:'Connecticut Lobster Roll',price:25,desc:'Warm Maine lobster tossed in melted butter on a toasted split top New England bun. With fries and coleslaw.',img:ROLL_IMG,icon:'fa-solid fa-star',bg:'bg-red',feature:true,badge:'Best seller'},
+  {id:'me-roll',cat:'lobster',name:'Maine Lobster Roll',price:25,desc:'The chilled classic. Sweet Maine lobster on a toasted split top bun, fries and slaw.',img:U('1751298467221-bb1b0d298101'),icon:'fa-regular fa-snowflake',bg:'bg-navy',badge:'Classic',bnavy:true},
+  {id:'quesa',cat:'lobster',name:'Lobster Quesadilla',price:25,desc:'Maine lobster, melted cheese and pico on a flour tortilla. Guac, sour cream and salsa on the side.',img:U('1719957770167-bb66133ba808'),icon:'fa-solid fa-pepper-hot',bg:'bg-butter'},
+  {id:'surf',cat:'lobster',name:'Surf & Turf Burger',price:25,desc:'Angus burger piled with lobster meat on a pretzel bun, served with fries.',img:U('1572802419224-296b0aeee0d9'),icon:'fa-solid fa-burger',bg:'bg-red',badge:'Loaded'},
+  {id:'shrimp',cat:'sea',name:'Fried Shrimp',price:16,desc:'Eight golden butterfly shrimp with fries and coleslaw.',img:U('1576777647209-e8733d7b851d'),icon:'fa-solid fa-shrimp',bg:'bg-red'},
+  {id:'tacos',cat:'sea',name:'Shrimp Tacos',price:16,desc:'Two tacos with slaw, shredded cheese and pico de gallo. Served with fries.',img:U('1611250188496-e966043a0629'),icon:'fa-solid fa-pepper-hot',bg:'bg-sea'},
+  {id:'crab',cat:'sea',name:'Crab Cakes',price:18,desc:'Two crispy fried crab cakes with fries and coleslaw.',img:U('1706167754833-4f87ff5f3397'),icon:'fa-solid fa-fish',bg:'bg-butter'},
+  {id:'pretzel',cat:'burger',name:'Pretzel Cheeseburger',price:15,desc:'Angus cheeseburger on a soft pretzel bun with fries.',img:U('1571091718767-18b5b1457add'),icon:'fa-solid fa-burger',bg:'bg-butter'},
+  {id:'guac',cat:'burger',name:'Guacamole Burger',price:18,desc:'Guacamole and bacon burger on a pretzel bun with fries.',img:U('1594212699903-ec8a3eca50f5'),icon:'fa-solid fa-bacon',bg:'bg-sea'},
+  {id:'coke',cat:'drink',name:'Bottle Coke',price:3,desc:'Ice cold glass bottle.',img:U('1514218953589-2d7d37efd2dc'),pos:'50% 92%',icon:'fa-solid fa-wine-bottle',bg:'bg-red'},
+  {id:'diet',cat:'drink',name:'Diet Coke',price:3,desc:'Ice cold, zero sugar.',img:U('1617641540576-7802b374fe38'),icon:'fa-solid fa-wine-bottle',bg:'bg-navy'},
+  {id:'sprite',cat:'drink',name:'Sprite',price:3,desc:'Crisp lemon lime.',img:U('1626810426622-dbaabb3bbc15'),icon:'fa-solid fa-lemon',bg:'bg-sea'},
+  {id:'water',cat:'drink',name:'Water',price:2,desc:'Bottled spring water.',img:U('1626810257238-19db99ca6c4c'),icon:'fa-solid fa-bottle-water',bg:'bg-navy'}
+];
+/* if a photo fails to load, fall back to the themed icon tile */
+function imgFail(img,icon){const i=document.createElement('i');i.className='ico '+icon;i.setAttribute('aria-hidden','true');img.replaceWith(i)}
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const money=n=>'$'+n.toFixed(2);
+const byId=Object.fromEntries(MENU.map(m=>[m.id,m]));
+
+/* render menu */
+$('#menuGrid').innerHTML=MENU.map(m=>`
+  <article class="dish${m.feature?' feature':''}" data-cat="${m.cat}">
+    <div class="dish-media ${m.bg}">
+      ${m.badge?`<span class="badge${m.bnavy?' b-navy':''}"><i class="fa-solid fa-fire"></i> ${m.badge}</span>`:''}
+      <img src="${m.img}" alt="${m.name}" loading="lazy"${m.pos?` style="object-position:${m.pos}"`:''} onerror="imgFail(this,'${m.icon}')">
+    </div>
+    <div class="dish-body">
+      <h3>${m.name}</h3><p>${m.desc}</p>
+      <div class="dish-foot"><span class="price">$${m.price}</span>
+      <button class="add" data-add="${m.id}" aria-label="Add ${m.name} to order"><i class="fa-solid fa-plus"></i></button></div>
+    </div>
+  </article>`).join('');
+
+/* filter */
+$$('.tab').forEach(t=>t.addEventListener('click',()=>{
+  $$('.tab').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false')});
+  t.classList.add('active');t.setAttribute('aria-selected','true');
+  const f=t.dataset.f;
+  $$('.dish').forEach(d=>{
+    const show=f==='all'||d.dataset.cat===f;
+    d.classList.toggle('hide',!show);
+    d.classList.remove('fade');
+    if(show){void d.offsetWidth;d.classList.add('fade')}
+  });
+}));
+
+/* cart */
+const cart={};
+function add(id,btn){
+  cart[id]=(cart[id]||0)+1;update();
+  toast(`${byId[id].name} added`);
+  const c=$('#cartCount');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump');
+  if(btn&&btn.classList.contains('add')){
+    btn.classList.add('done');btn.innerHTML='<i class="fa-solid fa-check"></i>';
+    setTimeout(()=>{btn.classList.remove('done');btn.innerHTML='<i class="fa-solid fa-plus"></i>'},1100);
+  }
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-add]');if(b)add(b.dataset.add,b);
+  const q=e.target.closest('[data-q]');
+  if(q){const id=q.dataset.id;cart[id]+= +q.dataset.q;if(cart[id]<=0)delete cart[id];update()}
+});
+function update(){
+  const ids=Object.keys(cart);
+  const count=ids.reduce((a,i)=>a+cart[i],0);
+  const sub=ids.reduce((a,i)=>a+cart[i]*byId[i].price,0);
+  const tax=sub*.065;
+  const cc=$('#cartCount');cc.textContent=count;cc.classList.toggle('show',count>0);
+  $('#tItems').textContent=count;$('#tTax').textContent=money(tax);$('#tTotal').textContent=money(sub+tax);
+  $('#barTotal').textContent=money(sub+tax);$('#barCount').textContent=count+(count===1?' item':' items');
+  $('#cartbar').classList.toggle('show',count>0&&!$('#drawer').classList.contains('open'));
+  $('#nextBtn').disabled=count===0;
+  $('#lines').innerHTML=count===0?`<div class="empty"><i class="fa-solid fa-basket-shopping"></i><p>Your basket is empty.<br>Add a lobster roll to get started.</p></div>`:
+    ids.map(i=>{const m=byId[i];return `<div class="line">
+      <div class="thumb ${m.bg}"><img src="${m.img}" alt=""${m.pos?` style="object-position:${m.pos}"`:''} onerror="imgFail(this,'${m.icon}')"></div>
+      <div class="info"><b>${m.name}</b><small>${money(m.price)} each</small></div>
+      <div class="qty"><button data-q="-1" data-id="${i}" aria-label="Remove one"><i class="fa-solid fa-minus"></i></button><span>${cart[i]}</span><button data-q="1" data-id="${i}" aria-label="Add one"><i class="fa-solid fa-plus"></i></button></div>
+    </div>`}).join('');
+  if(count===0&&step===2)setStep(1);
+}
+let step=1;
+function setStep(s){
+  step=s;
+  $('#lines').style.display=s===1?'':'none';
+  $('#checkout').classList.toggle('show',s===2);
+  $('#orderOk').style.display=s===3?'block':'none';
+  $('#dFoot').style.display=s===3?'none':'';
+  $('#dTitle').textContent=s===2?'Checkout':s===3?'All set':'Your order';
+  $('#nextTxt').textContent=s===2?'Place order':'Continue to checkout';
+}
+function openCart(){$('#drawer').classList.add('open');$('#overlay').classList.add('open');$('#drawer').setAttribute('aria-hidden','false');$('#cartbar').classList.remove('show');document.body.style.overflow='hidden';setTimeout(()=>$('#cartClose').focus(),300)}
+function closeCart(){$('#drawer').classList.remove('open');$('#overlay').classList.remove('open');$('#drawer').setAttribute('aria-hidden','true');document.body.style.overflow='';if(step===3)setStep(1);update()}
+$('#cartOpen').onclick=openCart;$('#barOpen').onclick=openCart;$('#cartClose').onclick=closeCart;$('#overlay').onclick=closeCart;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeNav()}});
+$('#backBtn').onclick=()=>setStep(1);
+$('#nextBtn').onclick=()=>{
+  if(step===1){setStep(2);return}
+  let ok=true;
+  [['#oName',v=>v.trim().length>1],['#oPhone',v=>v.replace(/\D/g,'').length>=10]].forEach(([s,t])=>{
+    const f=$(s).closest('.field'),good=t($(s).value);f.classList.toggle('err',!good);if(!good&&ok){$(s).focus();ok=false}
+  });
+  if(!ok)return;
+  const when=document.querySelector('input[name="when"]:checked').value;
+  $('#okMsg').textContent=`Thanks ${$('#oName').value.trim()}! Your order (${$('#tTotal').textContent}) will be ready ${when==='ASAP'?'in about 10 to 15 minutes':'in 30 minutes'}. Just say your name at the window.`;
+  Object.keys(cart).forEach(k=>delete cart[k]);$('#checkout').reset();
+  setStep(3);update();
+};
+$('#newOrder').onclick=()=>{setStep(1);closeCart();document.getElementById('menu').scrollIntoView()};
+
+function toast(t){const el=$('#toast');$('#toastTxt').textContent=t;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),1600)}
+
+/* catering form */
+let guests=50;
+$$('[data-g]').forEach(b=>b.onclick=()=>{guests=Math.max(10,Math.min(1000,guests+ +b.dataset.g*10));$('#gOut').textContent=guests+(guests>=1000?'+':'')});
+const dIn=$('#cDate');const tm=new Date();tm.setDate(tm.getDate()+1);dIn.min=tm.toISOString().split('T')[0];
+$('#caterForm').addEventListener('submit',e=>{
+  e.preventDefault();let ok=true;
+  [['#cName',v=>v.trim().length>1],['#cPhone',v=>v.replace(/\D/g,'').length>=10],['#cDate',v=>v&&v>=dIn.min],['#cCity',v=>v.trim().length>1]].forEach(([s,t])=>{
+    const f=$(s).closest('.field'),good=t($(s).value);f.classList.toggle('err',!good);if(!good&&ok){$(s).focus();ok=false}
+  });
+  if(!ok)return;
+  e.target.style.display='none';$('#caterOk').style.display='block';
+});
+$$('#caterForm input, #checkout input').forEach(i=>i.addEventListener('input',()=>i.closest('.field').classList.remove('err')));
+
+/* nav */
+const nav=$('#nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+function openNav(){$('#mnav').classList.add('open');$('#mnavOverlay').classList.add('open');$('#mnav').setAttribute('aria-hidden','false');$('#burger').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';setTimeout(()=>$('#mnavClose').focus(),300)}
+function closeNav(){if(!$('#mnav').classList.contains('open'))return;$('#mnav').classList.remove('open');$('#mnavOverlay').classList.remove('open');$('#mnav').setAttribute('aria-hidden','true');$('#burger').setAttribute('aria-expanded','false');if(!$('#drawer').classList.contains('open'))document.body.style.overflow=''}
+$('#burger').onclick=openNav;$('#mnavClose').onclick=closeNav;$('#mnavOverlay').onclick=closeNav;
+$$('#mnav a').forEach(a=>a.addEventListener('click',closeNav));
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+$('#yr').textContent=new Date().getFullYear();
+setStep(1);update();
+</script>
+</body>
+</html>
